@@ -11,6 +11,8 @@ const btn = document.getElementById("modeToggle");
 const btn2 = document.getElementById("modeToggle2");
 const themeIcons = document.querySelectorAll(".icon");
 const currentTheme = localStorage.getItem("theme");
+const invertableIcons = document.querySelectorAll(".invertable");
+const emailLink = document.getElementById("email-link");
 
 if (currentTheme === "dark") {
 	setDarkMode();
@@ -40,6 +42,9 @@ function setDarkMode() {
 	themeIcons.forEach((icon) => {
 		icon.src = icon.getAttribute("src-dark");
 	});
+	invertableIcons.forEach((icon) => {
+		icon.classList.add("inverted");
+	});
 }
 
 function setLightMode() {
@@ -48,4 +53,16 @@ function setLightMode() {
 	themeIcons.forEach((icon) => {
 		icon.src = icon.getAttribute("src-light");
 	});
+	invertableIcons.forEach((icon) => {
+		icon.classList.remove("inverted");
+	});
 }
+
+emailLink.addEventListener("click", function() {
+	const emailUser = "riccardotex";
+	const emailDomain = "gmail.com";
+	emailLink.href = `mailto:${emailUser}@${emailDomain}`;
+	setTimeout(() => {
+		emailLink.href = "masked-email";
+	}, 1000);	// Small delay to allow the mailto action to occur before resetting
+});

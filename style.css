@@ -93,6 +93,10 @@ a {
 	color: var(--secondary-color);
 }
 
+img {
+	color: var(--secondary-color);
+}
+
 a:hover {
 	color: var(--button-text-hover);
 	text-decoration: underline;
@@ -387,13 +391,45 @@ section {
 
 article {
 	display: flex;
-	width: 10rem;
+	width: fit-content;
 	justify-content: space-around;
 	gap: 0.5rem;
 }
 
 article .icon {
 	cursor: default;
+}
+
+article .programming-icon {
+	height: 4rem;
+}
+
+.inverted {
+	-webkit-filter: invert(.75); /* safari 6.0 - 9.0 */
+	filter: invert(.75);
+}
+
+.tooltip-icon {
+	position: relative;
+}
+
+.tooltip-icon span {
+	display: none;
+	position: absolute;
+	top: 100%; /* Position it directly below the image */
+	left: 50%; /* Align horizontally to the center of the image */
+	transform: translateX(-50%); /* Center the tooltip */
+	background: var(--secondary-color);
+	color: var(--primary-color);
+	padding: 5px 10px; /* Add padding to make it more readable */
+	border-radius: 5px; /* Optional: make it look nicer with rounded corners */
+	white-space: nowrap; /* Prevent the tooltip from breaking into multiple lines */
+	z-index: 10; /* Make sure the tooltip appears above other elements */
+}
+
+.tooltip-icon:hover span {
+	display: block;
+	opacity: 0.5;
 }
 
 /* Projects Section */
