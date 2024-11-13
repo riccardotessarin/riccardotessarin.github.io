@@ -66,3 +66,14 @@ emailLink.addEventListener("click", function() {
 		emailLink.href = "masked-email";
 	}, 1000);	// Small delay to allow the mailto action to occur before resetting
 });
+
+	
+function showDialog(title, description) {
+	document.getElementById('dialogTitle').innerText = title;
+	document.getElementById('dialogDescription').innerText = description;
+	document.getElementById('projectDialog').style.display = 'flex';
+}
+
+function closeDialog() {
+	document.getElementById('projectDialog').style.display = 'none';
+}
