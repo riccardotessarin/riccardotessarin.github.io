@@ -538,7 +538,6 @@ footer p {
 .dialog-box {
 	background: var(--background-color);
 	color: var(--secondary-color);
-	/* background: white; */
 	padding: 20px;
 	width: 80%;
 	max-width: 500px;
@@ -585,5 +584,6 @@ footer p {
 }
 
 .project-container {
-	/* min-width: 30rem; */
+	min-width: 25%;
+	max-width: 40%;
 }

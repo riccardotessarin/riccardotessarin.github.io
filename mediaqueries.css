@@ -9,6 +9,11 @@
 	#contact, #projects {
 		height: fit-content;
 	}
+
+	.project-container {
+		min-width: 40%;
+		max-width: 40%;
+	}
 }
   
 @media screen and (max-width: 1200px) {
@@ -40,6 +45,10 @@
 	}
 	.about-containers {
 		margin-top: 0;
+	}
+	.project-container {
+		min-width: 40%;
+		max-width: 90%;
 	}
 }
   
@@ -91,5 +100,9 @@
 	}
 	.text-container {
 		text-align: justify;
+	}
+	.project-container {
+		min-width: 80%;
+		max-width: 90%;
 	}
 }
