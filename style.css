@@ -587,3 +587,13 @@ footer p {
 	min-width: 25%;
 	max-width: 40%;
 }
+
+/* Hover effect class */
+.article-container.hover-effect .project-img {
+	transform: scale(1.05);
+	filter: blur(3px);
+}
+
+.article-container.hover-effect .overlay {
+	opacity: 1;
+}

@@ -77,3 +77,56 @@ function showDialog(title, description) {
 function closeDialog() {
 	document.getElementById('projectDialog').style.display = 'none';
 }
+
+
+
+let observer;
+const screenSizePixel = 600;
+
+// Function to initialize the Intersection Observer if on mobile
+function initializeObserverForMobile() {
+	// If already initialized, skip
+	if (observer || window.innerWidth > screenSizePixel) return;
+
+	// Select all .article-container elements
+	const articles = document.querySelectorAll('.article-container');
+
+	// Create an Intersection Observer
+	observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			// Check if the element is intersecting near the center of the viewport
+			if (entry.isIntersecting) {
+				entry.target.classList.add('hover-effect'); // Apply the effect
+			} else {
+				entry.target.classList.remove('hover-effect'); // Remove the effect
+			}
+		});
+	}, {
+		root: null, // Use the viewport as the root
+		rootMargin: '0px 0px -50% 0px', // Adjust to trigger near the center
+		threshold: 0.5 // 50% of the element must be visible to trigger
+	});
+
+	// Observe each article
+	articles.forEach(article => {
+		observer.observe(article);
+	});
+}
+
+if (window.innerWidth <= screenSizePixel) {
+	initializeObserverForMobile();
+}
+
+window.addEventListener('resize', () => {
+	// Clear any existing hover effects if switching to desktop
+	if (observer && window.innerWidth > screenSizePixel) {
+		observer.disconnect(); // Stop observing on larger screens
+		observer = null; // Reset the observer
+		document.querySelectorAll('.article-container').forEach(article => {
+			article.classList.remove('hover-effect');
+		});
+	} else {
+		// Initialize the observer again if resizing back to mobile
+		initializeObserverForMobile();
+	}
+});
